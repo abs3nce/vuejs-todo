@@ -5,6 +5,7 @@
                 <h1>To Do List</h1>
             </div>
             <div class="task-list">
+                <h1 v-if="tasks.length == 0">You have no tasks right now!</h1>
                 <table>
                     <tr v-if="tasks.length">
                         <th class="table-head">Done?</th>
@@ -54,11 +55,11 @@
 
 <script>
 export default {
-  methods: {
-      removeTask(taskID){
-          this.$emit("remove:task", taskID);
-      }
-  },
+    methods: {
+        removeTask(taskID) {
+            this.$emit("remove:task", taskID);
+        },
+    },
     props: {
         tasks: Array,
     },
