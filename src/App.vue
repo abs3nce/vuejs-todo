@@ -1,7 +1,7 @@
 <template>
     <div id="app">
         <add-task @add:task="addTask" />
-        <task-list :tasks="tasks" />
+        <task-list :tasks="tasks" @remove:task="removeTask" />
     </div>
 </template>
 
@@ -21,6 +21,16 @@ export default {
                 taskName: task.taskName,
                 taskDone: false,
                 taskID: this.tasks.length,
+            });
+        },
+
+        removeTask(taskID) {
+            console.log(taskID);
+            this.tasks.splice(taskID, 1);
+
+            this.tasks = this.tasks.map((value, index) => {
+                value.taskID = index;
+                return value;
             });
         },
     },

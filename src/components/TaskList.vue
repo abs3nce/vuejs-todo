@@ -9,15 +9,41 @@
                     <tr v-if="tasks.length">
                         <th class="table-head">Done?</th>
                         <th class="table-head">Task itself</th>
+                        <th class="table-head">Rewrite</th>
+                        <th style="color: #ff6666">Scrap it!</th>
                     </tr>
                     <tr v-for="task in tasks" :key="task.taskID">
                         <td class="task-check-box">
                             <input :id="task.taskID" type="checkbox" />
                         </td>
+
                         <td class="task-content">
                             <label :for="task.taskID">{{
                                 task.taskName
                             }}</label>
+                        </td>
+
+                        <td>
+                            <button
+                                class="task-rewrite-button"
+                                :id="task.taskID"
+                            >
+                                <img
+                                    src="https://img.icons8.com/ios/50/000000/pencil-tip.png"
+                                />
+                            </button>
+                        </td>
+
+                        <td>
+                            <button
+                                class="task-delete_button"
+                                :id="task.taskID"
+                                @click="removeTask(task.taskID)"
+                            >
+                                <img
+                                    src="https://img.icons8.com/flat_round/64/000000/delete-sign.png"
+                                />
+                            </button>
                         </td>
                     </tr>
                 </table>
@@ -28,12 +54,13 @@
 
 <script>
 export default {
+  methods: {
+      removeTask(taskID){
+          this.$emit("remove:task", taskID);
+      }
+  },
     props: {
         tasks: Array,
-    },
-    methods: {},
-    data() {
-        return {};
     },
 };
 </script>
@@ -63,8 +90,9 @@ export default {
             .table-head {
                 color: var(--accent-blue);
             }
+
             .task-content {
-                width: 90%;
+                width: 50%;
             }
             .task-check-box {
                 width: 10%;
@@ -73,6 +101,20 @@ export default {
                     height: 3vw;
                     border-radius: 32px;
                 }
+            }
+            .task-rewrite-button {
+                background: none;
+                border: none;
+            }
+            .task-rewrite-button:focus {
+                outline: none;
+            }
+            .task-delete_button {
+                background: none;
+                border: none;
+            }
+            .task-delete_button:focus {
+                outline: none;
             }
         }
     }
