@@ -93,6 +93,20 @@ export default {
 
         border: 1px solid var(--accent-blue);
         border-radius: 32px;
+
+        display: inline-block;
+        cursor: pointer;
+        text-align: center;
+        outline: none;
+    }
+    .submit-button:hover {
+        background-color: var(--accent-blue-light);
+        border: 1px solid var(--accent-blue-light);
+    }
+    .submit-button:active {
+        background-color: var(--accent-purple);
+        border: 1px solid var(--accent-purple);
+        transform: translateY(2px);
     }
 }
 </style>

@@ -28,7 +28,7 @@ export default {
             console.log(taskID);
             this.tasks.splice(taskID, 1);
 
-            this.tasks = this.tasks.map((value, index) => {
+            this.tasks = this.tasks.map(function(value, index) {
                 value.taskID = index;
                 return value;
             });
@@ -49,6 +49,7 @@ export default {
     --accent-white: #f5f5f5;
     --accent-blue: #c3aed6;
     --accent-purple: #8675a9;
+    --accent-blue-light: #99cccc;
     --h1-font: "Amatic SC", cursive;
     --text-font: "Amatic SC", cursive;
 }
